@@ -9,9 +9,12 @@ const nextConfig = {
     // Set image formats by order of preference
     formats: ['image/avif', 'image/webp'],
     // Enable image optimization
-    minimumCacheTTL: 60, // Cache optimized images for 60 seconds
+    minimumCacheTTL: 60 * 60 * 24, // Cache optimized images for 24 hours
     dangerouslyAllowSVG: true, // Allow SVG which we use for our logo
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    quality: 75,
   },
 
   // Add security headers
