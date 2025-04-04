@@ -1,5 +1,5 @@
 import Hero from '../src/components/Hero/Hero'
-import Impact from '../src/components/Impact/Impact'
+import Impact from '../src/components/Impact/impact'
 import Sealink from '../src/components/Sealink/Sealink'
 import ResponsiveImage from '../src/components/ResponsiveImage/ResponsiveImage'
 import ContactUs from '../src/components/ContactUs/ContactUs'
