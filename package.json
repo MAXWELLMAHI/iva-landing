@@ -1,0 +1,63 @@
+{
+  "name": "donation-platform",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.13.2",
+    "@studio-freight/lenis": "^1.0.42",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "body-parser": "^2.2.0",
+    "canvas-confetti": "^1.9.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "framer-motion": "^12.5.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.479.0",
+    "mysql2": "^3.14.0",
+    "next": "^15.1.7",
+    "react": "^18.2.0",
+    "react-confetti": "^6.4.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.12",
+    "react-intersection-observer": "^9.16.0",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.3",
+    "use-sound": "^5.0.0",
+    "web-vitals": "^2.1.4",
+    "winston": "^3.13.0",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "start": "next start",
+    "test": "react-scripts test",
+    "build": "next build",
+    "eject": "react-scripts eject",
+    "dev": "next dev",
+    "dev:full": "node dev.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

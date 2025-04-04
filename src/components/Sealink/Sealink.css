@@ -1,0 +1,86 @@
+/* Wrapper to handle alignment and padding */
+.slider-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center align for all screen sizes */
+  align-items: center; /* Center vertically if necessary */
+  padding: 0;
+}
+
+/* Base styles - desktop first approach with fixed dimensions */
+.slider-container {
+  position: relative;
+  width: 390px;
+  height: 527px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container, .blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container {
+  z-index: 1;
+}
+
+.blur-overlay {
+  z-index: 2;
+}
+
+.slideshow-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+}
+
+.blur-glass {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments - Center aligned for all devices */
+@media screen and (max-width: 768px) {
+  .slider-container {
+    width: 350px;
+    height: 473px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider-container {
+    width: 300px;
+    height: 405px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .slider-container {
+    width: 260px;
+    height: 351px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .slider-container {
+    width: 230px;
+    height: 311px;
+  }
+}
+
+@media screen and (max-width: 240px) {
+  .slider-container {
+    width: 90vw;
+    height: calc(90vw * 1.351); /* Maintain aspect ratio */
+  }
+}

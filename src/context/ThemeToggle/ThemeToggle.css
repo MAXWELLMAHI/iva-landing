@@ -1,0 +1,35 @@
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 999999;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Make sun icon white in dark mode */
+[data-theme='dark'] .theme-toggle svg {
+  color: white;
+}
+
+/* Keep moon icon dark in light mode */
+[data-theme='light'] .theme-toggle svg {
+  color: #1a1a1a;
+}
+
+/* Add a subtle animation for icon changes */
+.theme-toggle svg {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: scale(1.1);
+}

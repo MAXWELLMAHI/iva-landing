@@ -1,0 +1,11 @@
+{"level":"info","message":"Server running on port 5000 in development mode","timestamp":"2025-04-04T07:31:30.239Z"}
+{"error":"Access denied for user 'root'@'localhost' (using password: YES)","level":"error","message":"Database connection failed:","stack":"Error: Access denied for user 'root'@'localhost' (using password: YES)\n    at Packet.asError (C:\\Users\\mahes\\donation-platform\\node_modules\\mysql2\\lib\\packets\\packet.js:740:17)\n    at ClientHandshake.execute (C:\\Users\\mahes\\donation-platform\\node_modules\\mysql2\\lib\\commands\\command.js:29:26)\n    at PoolConnection.handlePacket (C:\\Users\\mahes\\donation-platform\\node_modules\\mysql2\\lib\\base\\connection.js:475:34)\n    at PacketParser.onPacket (C:\\Users\\mahes\\donation-platform\\node_modules\\mysql2\\lib\\base\\connection.js:93:12)\n    at PacketParser.executeStart (C:\\Users\\mahes\\donation-platform\\node_modules\\mysql2\\lib\\packet_parser.js:75:16)\n    at Socket.<anonymous> (C:\\Users\\mahes\\donation-platform\\node_modules\\mysql2\\lib\\base\\connection.js:100:25)\n    at Socket.emit (node:events:524:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)","timestamp":"2025-04-04T07:31:30.460Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","timestamp":"2025-04-04T07:32:12.249Z"}
+{"level":"info","message":"Database connection successful","timestamp":"2025-04-04T07:32:12.304Z"}
+{"level":"info","message":"Contact submissions table is ready","timestamp":"2025-04-04T07:32:12.415Z"}
+{"email":"maheshgolam12@gmail.com","id":6,"level":"info","message":"Form data saved to database","timestamp":"2025-04-04T07:40:29.859Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","timestamp":"2025-04-04T09:38:32.194Z"}
+{"level":"info","message":"Database connection successful","timestamp":"2025-04-04T09:38:32.245Z"}
+{"level":"info","message":"Contact submissions table is ready","timestamp":"2025-04-04T09:38:32.259Z"}
+{"email":"maheshgolam12@gmail.com","id":7,"level":"info","message":"Form data saved to database","timestamp":"2025-04-04T09:39:25.434Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-04-04T10:43:00.259Z"}
