@@ -4,6 +4,7 @@ import { Instagram, Twitter, Facebook, Linkedin, Phone, Mail, MapPin, Send } fro
 import ReactConfetti from 'react-confetti';
 import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 import './ContactUs.css';
+import Image from 'next/image';
 
 const validateField = (name, value) => {
   switch (name) {
@@ -123,7 +124,8 @@ const ContactUs = () => {
 
     try {
       // Send data to the server API
-      const response = await fetch('/api/contact', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
