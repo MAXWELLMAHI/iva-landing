@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./Sealink.css";
 
 const images = [
-  "/img1.svg",
-  "/img2.svg",
-  "/img3.svg",
-  "/img4.svg",
-  "/img5.svg"
+  "/imgg1.jpg",
+  "/imgg2.jpg",
+  "/imgg3.jpg",
+  "/imgg4.jpg",
+  "/imgg5.jpg",
+  "/imgg6.jpg" 
 ];
 
 const BlurGlassSlider = () => {
