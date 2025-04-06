@@ -28,22 +28,26 @@
 
 .image-container {
   z-index: 1;
+  overflow: hidden;
 }
 
 .blur-overlay {
   z-index: 2;
+  pointer-events: none;
 }
 
 .slideshow-image {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  transition: opacity 1s ease-in-out;
+  will-change: transform, opacity;
 }
 
 .blur-glass {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
 }
 
