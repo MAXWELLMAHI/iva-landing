@@ -44,8 +44,7 @@ const BlurGlassSlider = () => {
               priority={index === 0}
               sizes="(max-width: 768px) 100vw, 800px"
               style={{ objectFit: 'cover' }}
-              unoptimized={false}
-              quality={80}
+              quality={100}
             />
           </div>
         </div>
@@ -57,7 +56,6 @@ const BlurGlassSlider = () => {
             width={800}
             height={600}
             priority
-            unoptimized={true}
           />
         </div>
       </div>

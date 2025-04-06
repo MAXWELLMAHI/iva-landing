@@ -1,5 +1,6 @@
 import { ThemeProvider } from '../src/context/ThemeToggle/ThemeToggle';
 import { ErrorBoundary } from '../src/components/ErrorBoundary/ErrorBoundary';
+import PreloadImages from './preload-images';
 import '../styles/globals.css';
 
 export const metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
       <body>
         <ErrorBoundary>
           <ThemeProvider>
+            <PreloadImages />
             {children}
           </ThemeProvider>
         </ErrorBoundary>
