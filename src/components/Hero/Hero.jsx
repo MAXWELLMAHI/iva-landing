@@ -122,7 +122,7 @@ const Hero = () => {
         >
           <div className="mainimg">
             <Image 
-              src="/erasebg-transformed (1).png"
+              src="/mainimg.png"
               alt="Main Image"
               width={598}
               height={581}
