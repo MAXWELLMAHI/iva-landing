@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import "./Sealink.css";
 
-// Ensure images are loaded with the proper path
+// Ensure images are loaded with the proper path (with cache busting)
+const timestamp = new Date().getTime();
 const images = [
-  "/imgg1.jpg",
-  "/imgg2.jpg", 
-  "/imgg3.jpg",
-  "/imgg4.jpg",
-  "/imgg5.jpg",
-  "/imgg6.jpg"
+  `/imgg1.jpg?v=${timestamp}`,
+  `/imgg2.jpg?v=${timestamp}`, 
+  `/imgg3.jpg?v=${timestamp}`,
+  `/imgg4.jpg?v=${timestamp}`,
+  `/imgg5.jpg?v=${timestamp}`,
+  `/imgg6.jpg?v=${timestamp}`
 ];
 
 const BlurGlassSlider = () => {
@@ -36,26 +36,28 @@ const BlurGlassSlider = () => {
     <div className="slider-wrapper">
       <div className="slider-container">
         <div className="image-container">
-          <div className="slideshow-image">
-            <Image 
-              src={images[index]}
-              alt={`Slideshow image ${index + 1}`}
-              fill
-              priority={index === 0}
-              sizes="(max-width: 768px) 100vw, 800px"
-              style={{ objectFit: 'cover' }}
-              quality={100}
-            />
-          </div>
+          <div 
+            className="slideshow-image"
+            style={{
+              backgroundImage: `url(${images[index]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              width: '100%',
+              height: '100%',
+              position: 'absolute'
+            }}
+          />
         </div>
         <div className="blur-overlay">
-          <Image 
-            src="/Frame 126760.svg" 
+          <img 
+            src={`/Frame 126760.svg?v=${timestamp}`}
             alt="Blur Layer" 
             className="blur-glass"
-            width={800}
-            height={600}
-            priority
+            style={{
+              width: '100%', 
+              height: '100%',
+              objectFit: 'cover'
+            }}
           />
         </div>
       </div>

@@ -6,6 +6,9 @@ import { useTheme } from '../../context/ThemeToggle/ThemeToggle';
 import './Hero.css';
 import Image from 'next/image';
 
+// Add cache busting parameter
+const timestamp = new Date().getTime();
+
 const Hero = () => {
   const { theme } = useTheme();
   const controls = useAnimation();
@@ -77,12 +80,10 @@ const Hero = () => {
         >
           <div className="hero__logo-container">
             <motion.div className="hero__logo" variants={itemVariants}>
-              <Image 
-                src="/LOGO 1.svg" 
+              <img 
+                src={`/LOGO 1.svg?v=${timestamp}`}
                 alt="Logo"
-                width={100}
-                height={100}
-                priority
+                style={{ width: '100px', height: '100px' }}
               />
               <span className="hero__logo-text">IVA</span>
             </motion.div>
@@ -121,26 +122,25 @@ const Hero = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <div className="mainimg">
-            <Image 
-              src="/mainimg.png"
+            <img 
+              src={`/mainimg.png?v=${timestamp}`}
               alt="Main Image"
-              width={598}
-              height={581}
-              priority
-              quality={100}
-              loading="eager"
-              style={{ objectFit: 'contain' }}
-              sizes="(max-width: 360px) 280px, (max-width: 428px) 320px, (max-width: 767px) 400px, (max-width: 959px) 500px, 598px"
+              style={{ 
+                width: '100%',
+                height: 'auto',
+                maxWidth: '598px',
+                objectFit: 'contain'
+              }}
             />
             <div className="earth-gif-container">
-              <Image 
-                src="/Rotating_earth_animated_transparent.gif"
+              <img 
+                src={`/Rotating_earth_animated_transparent.gif?v=${timestamp}`}
                 alt="Rotating Earth"
-                width={140}
-                height={140}
-                priority
-                loading="eager"
-                style={{ objectFit: 'cover' }}
+                style={{ 
+                  width: '140px',
+                  height: '140px',
+                  objectFit: 'cover'
+                }}
               />
             </div>
           </div>
@@ -153,10 +153,10 @@ const Hero = () => {
           variants={containerVariants}
         >
           {[
-            { icon: "/select-range-svgrepo-com (1) 1.svg", text: "Select" },
-            { icon: "/upload-svgrepo-com (1) 1.svg", text: "Upload" },
-            { icon: "/calendar-svgrepo-com 1.svg", text: "Schedule" },
-            { icon: "/medal-reward-svgrepo-com 1.svg", text: "Reward" }
+            { icon: `/select-range-svgrepo-com (1) 1.svg?v=${timestamp}`, text: "Select" },
+            { icon: `/upload-svgrepo-com (1) 1.svg?v=${timestamp}`, text: "Upload" },
+            { icon: `/calendar-svgrepo-com 1.svg?v=${timestamp}`, text: "Schedule" },
+            { icon: `/medal-reward-svgrepo-com 1.svg?v=${timestamp}`, text: "Reward" }
           ].map((action, index) => (
             <motion.div 
               key={index} 
@@ -171,12 +171,10 @@ const Hero = () => {
               }}
             >
               <div className="hero__action-icon">
-                <Image 
+                <img 
                   src={action.icon}
                   alt={`${action.text} Icon`}
-                  width={24}
-                  height={24}
-                  priority
+                  style={{ width: '24px', height: '24px' }}
                 />
               </div>
               <span className="hero__action-text">{action.text}</span>
