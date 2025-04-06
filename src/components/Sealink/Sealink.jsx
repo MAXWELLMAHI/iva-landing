@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import "./Sealink.css";
 
 const images = [
@@ -13,39 +14,47 @@ const images = [
 
 const BlurGlassSlider = () => {
   const [index, setIndex] = useState(0);
-  const [currentImage, setCurrentImage] = useState(images[0]);
   
   useEffect(() => {
-    // Preload images for smoother transitions
-    const preloadImages = () => {
-      images.forEach((src) => {
-        const img = new Image();
-        img.src = src;
-      });
-    };
-    
-    preloadImages();
+    // Check if the images array is not empty
+    if (images.length === 0) return;
     
     const interval = setInterval(() => {
-      const newIndex = (index + 1) % images.length;
-      setIndex(newIndex);
-      setCurrentImage(images[newIndex]);
+      setIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3000);
     
     return () => clearInterval(interval);
-  }, [index]);
+  }, []);
+
+  // If no images, return null or a placeholder
+  if (images.length === 0) {
+    return <div className="slider-wrapper">No images available</div>;
+  }
 
   return (
     <div className="slider-wrapper">
       <div className="slider-container">
         <div className="image-container">
-          <div 
-            className="slideshow-image"
-            style={{ backgroundImage: `url(${currentImage})` }}
-          ></div>
+          <div className="slideshow-image">
+            <Image 
+              src={images[index]}
+              alt="Slideshow image"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 800px"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         </div>
         <div className="blur-overlay">
-          <img src="/Frame 126760.svg" alt="Blur Layer" className="blur-glass" />
+          <Image 
+            src="/Frame 126760.svg" 
+            alt="Blur Layer" 
+            className="blur-glass"
+            width={800}
+            height={600}
+            priority
+          />
         </div>
       </div>
     </div>
