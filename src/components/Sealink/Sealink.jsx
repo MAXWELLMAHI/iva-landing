@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "./Sealink.css";
 
+// Ensure images are loaded with the proper path
 const images = [
   "/imgg1.jpg",
-  "/imgg2.jpg",
+  "/imgg2.jpg", 
   "/imgg3.jpg",
   "/imgg4.jpg",
   "/imgg5.jpg",
-  "/imgg6.jpg" 
+  "/imgg6.jpg"
 ];
 
 const BlurGlassSlider = () => {
@@ -38,11 +39,13 @@ const BlurGlassSlider = () => {
           <div className="slideshow-image">
             <Image 
               src={images[index]}
-              alt="Slideshow image"
+              alt={`Slideshow image ${index + 1}`}
               fill
-              priority
+              priority={index === 0}
               sizes="(max-width: 768px) 100vw, 800px"
               style={{ objectFit: 'cover' }}
+              unoptimized={false}
+              quality={80}
             />
           </div>
         </div>
@@ -54,6 +57,7 @@ const BlurGlassSlider = () => {
             width={800}
             height={600}
             priority
+            unoptimized={true}
           />
         </div>
       </div>

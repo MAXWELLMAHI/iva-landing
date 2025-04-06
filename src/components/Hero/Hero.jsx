@@ -131,6 +131,7 @@ const Hero = () => {
               loading="eager"
               style={{ objectFit: 'contain' }}
               sizes="(max-width: 360px) 280px, (max-width: 428px) 320px, (max-width: 767px) 400px, (max-width: 959px) 500px, 598px"
+              unoptimized={false}
             />
             <div className="earth-gif-container">
               <Image 
@@ -139,7 +140,7 @@ const Hero = () => {
                 width={140}
                 height={140}
                 priority
-                unoptimized
+                unoptimized={true}
                 loading="eager"
                 style={{ objectFit: 'cover' }}
               />
