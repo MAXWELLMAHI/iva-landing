@@ -97,6 +97,9 @@ const Hero = () => {
                   {['mpact.', 'ision.', 'pproach.'][index]}
                 </motion.div>
               ))}
+              <motion.div className="hero__nav-item" variants={itemVariants}>
+                <a href="/donations" className="hero__nav-link">Donate</a>
+              </motion.div>
             </motion.nav>
           </div>
         </motion.div>
