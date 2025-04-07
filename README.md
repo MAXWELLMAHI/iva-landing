@@ -1,12 +1,9 @@
 # Donation Platform
 
-A modern donation platform built with Next.js and MySQL.
+A modern platform built with Next.js and MySQL.
 
 ## Features
 
-- Create and manage donations
-- Upload images for donations
-- Browse donations by category
 - Responsive design for all devices
 - Contact form with email notifications
 
@@ -30,7 +27,6 @@ A modern donation platform built with Next.js and MySQL.
 ## Project Structure
 
 - `src/components/` - React components
-  - `Donation/` - Donation-related components
   - `ContactUs/` - Contact form component
   - `Hero/` - Hero section component
   - `Impact/` - Impact section component
