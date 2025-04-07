@@ -1,11 +1,8 @@
 "use client";
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { addDocument, uploadFile } from '../../firebase/firebaseUtils';
 import './DonationForm.css';
 
 const DonationForm = () => {
-  const { user } = useAuth();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -37,37 +34,29 @@ const DonationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!user) {
-      setError('You must be logged in to create a donation');
-      return;
-    }
-
     try {
       setLoading(true);
       setError(null);
       
-      let imageUrl = null;
-      
-      // Upload image if provided
+      // Create FormData object for file upload
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('description', formData.description);
+      formDataToSend.append('amount', formData.amount);
+      formDataToSend.append('category', formData.category);
       if (formData.image) {
-        const imagePath = `donations/${user.uid}/${Date.now()}_${formData.image.name}`;
-        imageUrl = await uploadFile(imagePath, formData.image);
+        formDataToSend.append('image', formData.image);
       }
       
-      // Create donation document
-      const donationData = {
-        title: formData.title,
-        description: formData.description,
-        amount: parseFloat(formData.amount),
-        category: formData.category,
-        imageUrl,
-        userId: user.uid,
-        userName: user.displayName || user.email,
-        createdAt: new Date().toISOString(),
-        status: 'active'
-      };
+      // Send to your API endpoint
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/donations`, {
+        method: 'POST',
+        body: formDataToSend
+      });
       
-      await addDocument('donations', donationData);
+      if (!response.ok) {
+        throw new Error('Failed to create donation');
+      }
       
       // Reset form
       setFormData({
@@ -128,7 +117,7 @@ const DonationForm = () => {
         </div>
         
         <div className="form-group">
-          <label htmlFor="amount">Amount ($)</label>
+          <label htmlFor="amount">Amount</label>
           <input
             type="number"
             id="amount"
@@ -136,7 +125,7 @@ const DonationForm = () => {
             value={formData.amount}
             onChange={handleChange}
             required
-            min="0.01"
+            min="0"
             step="0.01"
             placeholder="Enter amount"
           />
@@ -156,7 +145,6 @@ const DonationForm = () => {
             <option value="healthcare">Healthcare</option>
             <option value="environment">Environment</option>
             <option value="emergency">Emergency</option>
-            <option value="other">Other</option>
           </select>
         </div>
         

@@ -1,73 +1,26 @@
-# Donation Platform with Firebase
+# Donation Platform
 
-A modern donation platform built with Next.js and Firebase.
+A modern donation platform built with Next.js and MySQL.
 
 ## Features
 
-- User authentication (signup, login, logout)
 - Create and manage donations
 - Upload images for donations
 - Browse donations by category
 - Responsive design for all devices
+- Contact form with email notifications
 
-## Firebase Setup
-
-1. Create a Firebase project at [https://console.firebase.google.com/](https://console.firebase.google.com/)
-2. Enable Authentication, Firestore, and Storage services
-3. Create a web app in your Firebase project
-4. Copy the Firebase configuration values from the Firebase console
-5. Update the `.env.local` file with your Firebase configuration:
-
-```
-NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
-NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
-NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your-measurement-id
-```
-
-6. Set up Firestore security rules:
-
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /donations/{donationId} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    match /users/{userId} {
-      allow read: if true;
-      allow write: if request.auth != null && request.auth.uid == userId;
-    }
-  }
-}
-```
-
-7. Set up Storage security rules:
-
-```
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /donations/{userId}/{allPaths=**} {
-      allow read: if true;
-      allow write: if request.auth != null && request.auth.uid == userId;
-    }
-  }
-}
-```
-
-## Installation
+## Setup
 
 1. Clone the repository
 2. Install dependencies:
    ```
    npm install
    ```
-3. Set up your Firebase configuration in `.env.local`
+3. Set up your environment variables in `.env.local`:
+   ```
+   NEXT_PUBLIC_API_URL=your-backend-url
+   ```
 4. Run the development server:
    ```
    npm run dev
@@ -76,17 +29,55 @@ service firebase.storage {
 
 ## Project Structure
 
-- `src/firebase/` - Firebase configuration and utility functions
-- `src/context/` - React context providers
 - `src/components/` - React components
-  - `Auth/` - Authentication components
   - `Donation/` - Donation-related components
+  - `ContactUs/` - Contact form component
+  - `Hero/` - Hero section component
+  - `Impact/` - Impact section component
+  - `Sealink/` - Sealink section component
 
-## Firebase Features Used
+## Backend Setup
 
-- **Authentication**: User signup, login, and session management
-- **Firestore**: Storing donation data
-- **Storage**: Storing donation images
+1. Navigate to the server directory:
+   ```
+   cd server
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a `.env` file with the following variables:
+   ```
+   DB_HOST=your_mysql_host
+   DB_USER=your_mysql_user
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=your_database_name
+   DB_PORT=3306
+   CORS_ORIGIN=http://localhost:3000
+   PORT=10000
+   ```
+
+4. Run the development server:
+   ```
+   npm run dev
+   ```
+
+## Deployment
+
+### Frontend (Vercel)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Set the environment variables in Vercel dashboard
+4. Deploy
+
+### Backend (Render)
+1. Create a MySQL database on Render or use an external service
+2. Create a new Web Service on Render
+3. Connect your GitHub repository
+4. Set the environment variables in Render dashboard
+5. Deploy
 
 ## License
 
