@@ -9,3 +9,7 @@
 {"level":"info","message":"Contact submissions table is ready","timestamp":"2025-04-04T09:38:32.259Z"}
 {"email":"maheshgolam12@gmail.com","id":7,"level":"info","message":"Form data saved to database","timestamp":"2025-04-04T09:39:25.434Z"}
 {"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-04-04T10:43:00.259Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","timestamp":"2025-04-04T13:19:45.929Z"}
+{"level":"info","message":"Database connection successful","timestamp":"2025-04-04T13:19:46.020Z"}
+{"level":"info","message":"Contact submissions table is ready","timestamp":"2025-04-04T13:19:46.060Z"}
+{"email":"maheshgolam12@gmail.com","id":8,"level":"info","message":"Form data saved to database","timestamp":"2025-04-04T13:21:56.892Z"}

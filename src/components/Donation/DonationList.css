@@ -1,0 +1,151 @@
+.donation-list-container {
+  padding: 2rem 0;
+}
+
+.donation-list-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.donation-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.donation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.donation-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.donation-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.donation-content {
+  padding: 1.5rem;
+}
+
+.donation-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.donation-description {
+  margin: 0 0 1.25rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.donation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.donation-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.amount-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.amount-value {
+  font-weight: 600;
+  color: #4a90e2;
+  font-size: 1.1rem;
+}
+
+.donation-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.donation-category {
+  text-transform: capitalize;
+  background-color: #f0f7ff;
+  color: #4a90e2;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.donate-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.donate-button:hover {
+  background-color: #3a7bc8;
+}
+
+.donation-list-loading,
+.donation-list-error,
+.donation-list-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.donation-list-error {
+  color: #d32f2f;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .donation-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .donation-list-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .donation-grid {
+    grid-template-columns: 1fr;
+  }
+} 

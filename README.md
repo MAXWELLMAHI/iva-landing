@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Donation Platform with Firebase
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern donation platform built with Next.js and Firebase.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User authentication (signup, login, logout)
+- Create and manage donations
+- Upload images for donations
+- Browse donations by category
+- Responsive design for all devices
 
-### `npm start`
+## Firebase Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Create a Firebase project at [https://console.firebase.google.com/](https://console.firebase.google.com/)
+2. Enable Authentication, Firestore, and Storage services
+3. Create a web app in your Firebase project
+4. Copy the Firebase configuration values from the Firebase console
+5. Update the `.env.local` file with your Firebase configuration:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your-measurement-id
+```
 
-### `npm test`
+6. Set up Firestore security rules:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /donations/{donationId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
 
-### `npm run build`
+7. Set up Storage security rules:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /donations/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up your Firebase configuration in `.env.local`
+4. Run the development server:
+   ```
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `src/firebase/` - Firebase configuration and utility functions
+- `src/context/` - React context providers
+- `src/components/` - React components
+  - `Auth/` - Authentication components
+  - `Donation/` - Donation-related components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Firebase Features Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Authentication**: User signup, login, and session management
+- **Firestore**: Storing donation data
+- **Storage**: Storing donation images
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
