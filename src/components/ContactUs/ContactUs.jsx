@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Instagram, Twitter, Facebook, Linkedin, Phone, Mail, MapPin, Send } from 'lucide-react';
 import ReactConfetti from 'react-confetti';
-import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 import './ContactUs.css';
 import Image from 'next/image';
 
@@ -177,199 +176,197 @@ const ContactUs = () => {
   };
 
   return (
-    <ErrorBoundary>
-      <div className="contact-page">
-        {/* Confetti effect */}
-        {showConfetti && (
-          <ReactConfetti
-            width={windowSize.width}
-            height={windowSize.height}
-            recycle={false}
-            numberOfPieces={200}
-            gravity={0.3}
-          />
-        )}
-        
-        <div className="container">
-          <div className="header">
-            <h1>Contact Us</h1>
-            <p>
-              Have any question in mind or want to enquire? Please feel free to contact us through the form or the following details.
-            </p>
-            {/* Show success/error messages */}
-            {success && (
-              <div className="success-message">
-                Thank you for your message! We will get back to you soon! 🎉
-              </div>
-            )}
-            {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
-          </div>
-
-          <div className="contact-card">
-            <div className="floating-circles">
-              <div className="circle float-1"></div>
-              <div className="circle float-2"></div>
-              <div className="circle float-3"></div>
-              <div className="circle float-4"></div>
-              <div className="circle float-5"></div>
+    <div className="contact-page">
+      {/* Confetti effect */}
+      {showConfetti && (
+        <ReactConfetti
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={200}
+          gravity={0.3}
+        />
+      )}
+      
+      <div className="container">
+        <div className="header">
+          <h1>Contact Us</h1>
+          <p>
+            Have any question in mind or want to enquire? Please feel free to contact us through the form or the following details.
+          </p>
+          {/* Show success/error messages */}
+          {success && (
+            <div className="success-message">
+              Thank you for your message! We will get back to you soon! 🎉
             </div>
-            
-            <div className="contact-content">
-              {/* Left side - Form */}
-              <div className="form-section">
-                <form onSubmit={handleSubmit} noValidate>
-                  <div className={`form-group ${formErrors.name && touched.name ? 'error' : ''}`}>
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      required
-                      placeholder="Your name"
-                      aria-invalid={formErrors.name ? 'true' : 'false'}
-                      aria-describedby={formErrors.name ? 'name-error' : undefined}
-                    />
-                    {formErrors.name && touched.name && (
-                      <div className="error-text" id="name-error">{formErrors.name}</div>
-                    )}
-                  </div>
+          )}
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
+        </div>
 
-                  <div className={`form-group ${formErrors.email && touched.email ? 'error' : ''}`}>
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      required
-                      placeholder="your@email.com"
-                      aria-invalid={formErrors.email ? 'true' : 'false'}
-                      aria-describedby={formErrors.email ? 'email-error' : undefined}
-                    />
-                    {formErrors.email && touched.email && (
-                      <div className="error-text" id="email-error">{formErrors.email}</div>
-                    )}
-                  </div>
-
-                  <div className={`form-group ${formErrors.subject && touched.subject ? 'error' : ''}`}>
-                    <label htmlFor="subject">Subject</label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      required
-                      placeholder="How can we help?"
-                      aria-invalid={formErrors.subject ? 'true' : 'false'}
-                      aria-describedby={formErrors.subject ? 'subject-error' : undefined}
-                    />
-                    {formErrors.subject && touched.subject && (
-                      <div className="error-text" id="subject-error">{formErrors.subject}</div>
-                    )}
-                  </div>
-
-                  <div className={`form-group ${formErrors.message && touched.message ? 'error' : ''}`}>
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      rows="4"
-                      required
-                      placeholder="Your message here..."
-                      aria-invalid={formErrors.message ? 'true' : 'false'}
-                      aria-describedby={formErrors.message ? 'message-error' : undefined}
-                    />
-                    {formErrors.message && touched.message && (
-                      <div className="error-text" id="message-error">{formErrors.message}</div>
-                    )}
-                  </div>
-
-                  <div className="form-group">
-                    <button 
-                      type="submit" 
-                      className="submit-btn" 
-                      disabled={isSubmitting}
-                      aria-busy={isSubmitting ? 'true' : 'false'}
-                    >
-                      <Send className="send-icon" />
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Right side - Contact information and quote */}
-              <div className="info-section">
-                <div className="splash-circles">
-                  <div className="splash splash-1"></div>
-                  <div className="splash splash-2"></div>
-                  <div className="splash splash-3"></div>
+        <div className="contact-card">
+          <div className="floating-circles">
+            <div className="circle float-1"></div>
+            <div className="circle float-2"></div>
+            <div className="circle float-3"></div>
+            <div className="circle float-4"></div>
+            <div className="circle float-5"></div>
+          </div>
+          
+          <div className="contact-content">
+            {/* Left side - Form */}
+            <div className="form-section">
+              <form onSubmit={handleSubmit} noValidate>
+                <div className={`form-group ${formErrors.name && touched.name ? 'error' : ''}`}>
+                  <label htmlFor="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    placeholder="Your name"
+                    aria-invalid={formErrors.name ? 'true' : 'false'}
+                    aria-describedby={formErrors.name ? 'name-error' : undefined}
+                  />
+                  {formErrors.name && touched.name && (
+                    <div className="error-text" id="name-error">{formErrors.name}</div>
+                  )}
                 </div>
 
-                <div className="info-content">
-                  <h2>Get in Touch</h2>
-                  
-                  <div className="contact-info">
-                    <div className="info-item">
-                      <Phone className="info-icon" />
-                      <div>
-                        <p className="info-label">Phone</p>
-                        <p className="info-value">+91 (9321) 608-490</p>
-                      </div>
-                    </div>
-                    
-                    <div className="info-item">
-                      <Mail className="info-icon" />
-                      <div>
-                        <p className="info-label">Email</p>
-                        <p className="info-value">iva@example.com</p>
-                      </div>
-                    </div>
-                    
-                    <div className="info-item">
-                      <MapPin className="info-icon" />
-                      <div>
-                        <p className="info-label">Address</p>
-                        <p className="info-value">123 Charity Street, Impact City, 400001</p>
-                      </div>
+                <div className={`form-group ${formErrors.email && touched.email ? 'error' : ''}`}>
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    placeholder="your@email.com"
+                    aria-invalid={formErrors.email ? 'true' : 'false'}
+                    aria-describedby={formErrors.email ? 'email-error' : undefined}
+                  />
+                  {formErrors.email && touched.email && (
+                    <div className="error-text" id="email-error">{formErrors.email}</div>
+                  )}
+                </div>
+
+                <div className={`form-group ${formErrors.subject && touched.subject ? 'error' : ''}`}>
+                  <label htmlFor="subject">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    placeholder="How can we help?"
+                    aria-invalid={formErrors.subject ? 'true' : 'false'}
+                    aria-describedby={formErrors.subject ? 'subject-error' : undefined}
+                  />
+                  {formErrors.subject && touched.subject && (
+                    <div className="error-text" id="subject-error">{formErrors.subject}</div>
+                  )}
+                </div>
+
+                <div className={`form-group ${formErrors.message && touched.message ? 'error' : ''}`}>
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    rows="4"
+                    required
+                    placeholder="Your message here..."
+                    aria-invalid={formErrors.message ? 'true' : 'false'}
+                    aria-describedby={formErrors.message ? 'message-error' : undefined}
+                  />
+                  {formErrors.message && touched.message && (
+                    <div className="error-text" id="message-error">{formErrors.message}</div>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <button 
+                    type="submit" 
+                    className="submit-btn" 
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting ? 'true' : 'false'}
+                  >
+                    <Send className="send-icon" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* Right side - Contact information and quote */}
+            <div className="info-section">
+              <div className="splash-circles">
+                <div className="splash splash-1"></div>
+                <div className="splash splash-2"></div>
+                <div className="splash splash-3"></div>
+              </div>
+
+              <div className="info-content">
+                <h2>Get in Touch</h2>
+                
+                <div className="contact-info">
+                  <div className="info-item">
+                    <Phone className="info-icon" />
+                    <div>
+                      <p className="info-label">Phone</p>
+                      <p className="info-value">+91 (9321) 608-490</p>
                     </div>
                   </div>
                   
-                  <div className="social-links">
-                    <a href="https://www.instagram.com/_theiva.in?igsh=cnRlamRuN21reDhq" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                      <Instagram />
-                    </a>
-                    <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                      <Twitter />
-                    </a>
-                    <a href="https://www.facebook.com/share/1C5rkNHR7E/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                      <Facebook />
-                    </a>
-                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                      <Linkedin />
-                    </a>
+                  <div className="info-item">
+                    <Mail className="info-icon" />
+                    <div>
+                      <p className="info-label">Email</p>
+                      <p className="info-value">iva@example.com</p>
+                    </div>
                   </div>
+                  
+                  <div className="info-item">
+                    <MapPin className="info-icon" />
+                    <div>
+                      <p className="info-label">Address</p>
+                      <p className="info-value">123 Charity Street, Impact City, 400001</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="social-links">
+                  <a href="https://www.instagram.com/_theiva.in?igsh=cnRlamRuN21reDhq" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <Instagram />
+                  </a>
+                  <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                    <Twitter />
+                  </a>
+                  <a href="https://www.facebook.com/share/1C5rkNHR7E/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <Facebook />
+                  </a>
+                  <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <Linkedin />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </ErrorBoundary>
+    </div>
   );
 };
 

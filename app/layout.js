@@ -1,5 +1,4 @@
 import { ThemeProvider } from '../src/context/ThemeToggle/ThemeToggle';
-import { ErrorBoundary } from '../src/components/ErrorBoundary/ErrorBoundary';
 import PreloadImages from './preload-images';
 import '../styles/globals.css';
 
@@ -38,12 +37,10 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
       </head>
       <body>
-        <ErrorBoundary>
-          <ThemeProvider>
-            <PreloadImages />
-            {children}
-          </ThemeProvider>
-        </ErrorBoundary>
+        <ThemeProvider>
+          <PreloadImages />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
