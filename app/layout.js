@@ -1,4 +1,5 @@
 import { ThemeProvider } from '../src/context/ThemeToggle/ThemeToggle';
+import { ErrorBoundary } from 'react-error-boundary';
 import PreloadImages from './preload-images';
 import '../styles/globals.css';
 
@@ -37,10 +38,18 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
       </head>
       <body>
-        <ThemeProvider>
-          <PreloadImages />
-          {children}
-        </ThemeProvider>
+        <ErrorBoundary
+          fallback={<div>Something went wrong. Please try refreshing the page.</div>}
+          onError={(error, errorInfo) => {
+            // You can log the error to an error reporting service here
+            console.error('Error caught by ErrorBoundary:', error, errorInfo);
+          }}
+        >
+          <ThemeProvider>
+            <PreloadImages />
+            {children}
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
